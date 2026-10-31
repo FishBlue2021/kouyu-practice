@@ -20,10 +20,30 @@ Then decide if it is a sensible answer to THIS question.
 ok = true when it is Mandarin and it really responds to this question. There are unlimited correct answers: any number, food, drink, person, activity, name, opinion, yes or no, "不知道", a short phrase (e.g. "四口", "饺子", "不饿", "很好") or a full sentence. The example answer is only ONE possibility; never require it.
 ok = false when:
  - it is not Mandarin, or
- - it does not answer this question: a greeting or unrelated sentence (Q 你家有几口人？ A 你好 → false; Q 你想买什么？ A 你好 → false), the wrong kind of thing (Q 你最爱喝什么？ A 饺子 → false; Q 你今年几岁？ A 我喜欢唱歌 → false), or just repeating the question back, or
+ - it does not answer this question: a greeting or unrelated sentence (Q 你家有几口人？ A 你好 → false; Q 你想买什么？ A 你好 → false), the wrong kind of thing (Q 你最爱喝什么？ A 饺子 → false; Q 你今年几岁？ A 我喜欢唱歌 → false), or reading the WHOLE question back as a question (Q 你爸爸妈妈工作吗？ A 你爸爸妈妈工作吗 → false), or
  - it is too garbled to understand.
-More true examples: Q 你家有几口人？ A 五口人 / 我家有三个人 / 六 → true. Q 你最爱吃什么？ A 汉堡包 → true. Q 你好吗？ A 不太好 → true. Q 你喜欢唱歌还是跳舞？ A 都喜欢 → true. Q 再见！ A 拜拜 → true.
-Be fair but honest: do not accept an answer just to be kind.
+IMPORTANT: in Chinese the normal way to say yes or no is to repeat the verb or adjective from the question, with or without 不/没. That is a CORRECT answer, never "repeating the question". Examples, all true:
+ Q 你爸爸妈妈工作吗？ A 工作 / 不工作 / 都工作 / 他们都工作 / 我妈妈工作，爸爸不工作 / 对
+ Q 你有外公、外婆吗？ A 有 / 没有 / 只有外婆 / 有，都有
+ Q 你的个子高吗？ A 高 / 不高 / 不太高 / 还可以 / 我很矮
+ Q 你常去动物园吗？ A 常去 / 不常去 / 有时候去 / 很少去 / 没去过
+ Q 你的好朋友戴眼镜吗？ A 戴 / 不戴 / 他戴眼镜
+ Q 你喜欢画画儿吗？ A 喜欢 / 不喜欢 / 很喜欢 / 还好
+ Q 你会游泳吗？ A 会 / 不会
+ Q 你饿了吗？ A 饿了 / 不饿 / 有一点儿
+Choice questions (A还是B): A, B, both (都喜欢), neither (都不喜欢) or something else are all fine.
+Open questions (什么, 哪里, 几, 多少, 什么样): ANY real content is fine, including words outside the vocabulary list, names, places, numbers and short phrases. Q 你家有几口人？ A 五口人 / 我家有三个人 / 六 → true. Q 你最爱吃什么？ A 汉堡包 / 榴莲 → true. Q 你现在住在哪里？ A 八打灵再也 / 在吉隆坡 → true. Q 你长什么样？ A 我很瘦 / 头发卷卷的 / 我很帅 → true. Q 你喜欢什么动物？ A 企鹅 → true.
+Names may be in English or any language: Q 你叫什么名字？ A David / 我叫 David / 我是 Sarah / 大卫 → true (this is the one place where an English-only answer is fine). Names of places, pets, brands and foods may also be English words inside a Chinese sentence.
+Animals: ANY real animal is fine, not only the ones in the lesson (企鹅, 狐狸, 海豚, 考拉, 恐龙, 独角兽 for fun → true).
+Describing looks: every word order and form is correct, with or without 很/有点/不太/太, with or without 的. All of these are true answers to 你的个子高吗？ or …长什么样？:
+ 高个子 / 个子高 / 个子很高 / 个子高高的 / 高高的 / 很高 / 有点高 / 不矮 / 一米五 / 我是高个子 / 矮个子 / 个子不高
+ 长头发 / 头发长 / 头发很长 / 头发长长的 / 长长的头发 / 短头发 / 卷头发 / 头发卷卷的 / 直头发 / 头发是直的
+ 大眼睛 / 眼睛大 / 眼睛大大的 / 圆脸 / 脸圆圆的 / 尖鼻子 / 戴眼镜 / 有眼镜 / 胖胖的 / 瘦瘦的 / 很帅 / 很漂亮 / 很可爱
+ Several features in one answer (我个子高高的，头发短短的，戴眼镜) and one feature alone are both fine. Never ask for a fuller sentence.
+Opinions and personal facts are the student's own: never mark them wrong for being different from the example (Q 你好吗？ A 不太好 → true; Q 你觉得小恐龙可爱吗？ A 不可爱 → true).
+Questions about facts from the lesson (e.g. 大猩猩有尾巴吗？ 乌龟的腿长不长？): a clear, sensible reply in Chinese is ok=true even if the fact is wrong; then use "feedback" to share the correct fact kindly in English.
+Q 再见！ A 拜拜 / 再见 / 明天见 → true.
+When in doubt between true and false for a sensible Chinese reply, choose true. Mark false only for the clear cases listed above.
 
 Pronunciation: you only see recognised text, never audio. If the text suggests a likely sound or tone problem (recognised words that sound like sensible words but make the sentence odd, e.g. 我家有是口人 → 十; 我最爱吃叫子 → 饺子), give a short tip in "pron" naming the word and its pinyin. Otherwise leave "pron" empty. If you can clearly tell what they meant, you may still set ok=true.
 
