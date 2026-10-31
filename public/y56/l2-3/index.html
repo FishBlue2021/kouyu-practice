@@ -210,6 +210,7 @@ button,input{touch-action:manipulation}
       <div class="links">
         <button class="link" id="typeToggle" type="button">Type instead</button>
         <button class="link" id="slowBtn" type="button">Slow voice: off</button>
+        <button class="link" id="enBtn" type="button" hidden>My name is in English</button>
         <button class="link" id="skipBtn" type="button" hidden>Skip this question</button>
       </div>
     </div>
@@ -229,7 +230,7 @@ button,input{touch-action:manipulation}
     <p>“Every little sentence is a big step forward.”</p>
     <cite>— Ms Fong</cite>
   </blockquote>
-  <div class="ver"><a href="../" style="color:#C9D5EA;font-weight:800">← All Year 5/6 missions</a><br>Year 5/6 · Lessons 2–3 · Version 5</div>
+  <div class="ver"><a href="../" style="color:#C9D5EA;font-weight:800">← All Year 5/6 missions</a><br>Year 5/6 · Lessons 2–3 · Version 6</div>
 </div>
 
 <script>
@@ -327,17 +328,18 @@ const SR=window.SpeechRecognition||window.webkitSpeechRecognition||null;
 const IOS=/iPad|iPhone|iPod/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
 const L={r:null,final:'',interim:'',alts:[],restarts:0,silence:null,cap:null,stopping:false,err:''};
 function micUI(on){ $('micBtn').classList.toggle('rec',on); $('micLab').textContent=on?'Listening… tap when you finish':'Tap to speak'; }
-function listen(){
+function listen(lang){
   if(!SR||S.busy) return;
   if(L.r){ finishListening(); return; }
   hush();
+  L.lang=(typeof lang==='string')?lang:'zh-CN';
   L.final=''; L.interim=''; L.alts=[]; L.restarts=0; L.err='';
   $('said').hidden=false; $('said').classList.add('live'); $('saidText').textContent='…';
   startRec();
 }
 function startRec(){
   const r=new SR(); L.r=r; L.stopping=false;
-  r.lang='zh-CN'; r.interimResults=true; r.maxAlternatives=3; r.continuous=!IOS;
+  r.lang=L.lang||'zh-CN'; r.interimResults=true; r.maxAlternatives=3; r.continuous=!IOS;
   r.onresult=e=>{
     let fin='', mid=''; const alts=[];
     for(let k=0;k<e.results.length;k++){
@@ -356,13 +358,17 @@ function startRec(){
     if(!heard && !L.stopping && L.restarts<1 && (!L.err||L.err==='no-speech')){ L.restarts++; L.err=''; try{ startRec(); return; }catch(e){} }
     L.r=null; clearTimeout(L.silence); clearTimeout(L.cap); micUI(false); $('said').classList.remove('live');
     if(heard){ answer(heard, L.alts); return; }
+    const q=S.qs[S.i];
+    if(q&&q.k==='*'&&L.lang!=='en-US'&&!S.triedEn&&(!L.err||L.err==='no-speech'||L.err==='aborted')){
+      S.triedEn=true; status('Is your name in English? Say it again. Dino is listening in English…');
+      setTimeout(()=>listen('en-US'),350); return; }
     $('said').hidden=true;
     status(L.err==='not-allowed'||L.err==='service-not-allowed' ? 'The microphone is blocked. Click the 🔒 or 🎙️ in the address bar, allow the microphone, then try again.'
       : L.err==='audio-capture' ? 'No microphone was found. Check that one is plugged in, or tap “Type instead”.'
       : L.err==='network' ? 'Listening needs an internet connection. Check the Wi-Fi and try again.'
       : 'Dino didn’t catch that. Tap the microphone, speak a little louder, then pause.');
   };
-  try{ r.start(); micUI(true); status('Speak now. Dino is listening…');
+  try{ r.start(); micUI(true); status(L.lang==='en-US'?'Say your name. Dino is listening in English…':'Speak now. Dino is listening…');
        clearTimeout(L.cap); L.cap=setTimeout(finishListening, 12000); }
   catch(e){ L.r=null; micUI(false); status('The microphone couldn’t start. Tap it again.'); }
 }
@@ -403,7 +409,7 @@ function lock(on){ S.busy=on; $('micBtn').disabled=on||!SR; $('hintBtn').disable
 
 async function showQuestion(){
   const run=++S.run, q=S.qs[S.i];
-  S.tries=0; S.hint=0;
+  S.tries=0; S.hint=0; S.triedEn=false; $('enBtn').hidden=!(q.k==='*'&&SR);
   $('qnum').textContent=`QUESTION ${S.i+1} OF ${S.qs.length} · ${STAGES[q.stage].toUpperCase()}`;
   $('said').hidden=true; panel('fb','',''); panel('help','',''); $('nextBtn').hidden=true; $('skipBtn').hidden=true;
   setBubble(q.q,'Dino is asking…'); steps(); mood(); lock(false);
@@ -537,7 +543,8 @@ async function startRound(){
 }
 $('startBtn').onclick=startRound;
 $('againBtn').onclick=startRound;
-$('micBtn').onclick=listen;
+$('micBtn').onclick=()=>listen();
+$('enBtn').onclick=()=>{ S.triedEn=true; listen('en-US'); };
 $('replayBtn').onclick=()=>{ if(S.bubble) speak(S.bubble.zh); };
 $('playBtn').onclick=()=>{ if(S.bubble) speak(S.bubble.zh); };
 $('showBtn').onclick=()=>{ $('bubbleText').hidden=false; $('showBtn').hidden=true; };
