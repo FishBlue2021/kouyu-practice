@@ -56,7 +56,8 @@ header h1{font-size:clamp(26px,5.5vw,36px);font-weight:900;margin:0;line-height:
 
 /* Dino + speech bubble */
 .scene{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:8px}
-.dino{font-size:clamp(96px,24vw,150px);line-height:1;user-select:none;transform-origin:50% 90%;animation:bob 3s ease-in-out infinite}
+.dino img{width:100%;height:100%;display:block;object-fit:contain;filter:drop-shadow(0 6px 10px #0000002e)}
+.dino{width:clamp(160px,44vw,210px);aspect-ratio:1;max-width:100%;user-select:none;transform-origin:50% 90%;animation:bob 3s ease-in-out infinite}
 @keyframes bob{50%{transform:translateY(-6px)}}
 .dino.talk{animation:talk .45s ease-in-out infinite}
 @keyframes talk{50%{transform:rotate(-4deg) scale(1.03)}}
@@ -117,7 +118,7 @@ header h1{font-size:clamp(26px,5.5vw,36px);font-weight:900;margin:0;line-height:
 .howto b{color:var(--jade)}
 .btn.wide{align-self:stretch}
 .end{text-align:center;align-items:center}
-.end .dino{font-size:120px}
+.end .dino{width:170px}
 .end h2{font-size:32px;font-weight:900;margin:0}
 .end p{margin:0;color:var(--muted)}
 .end .starrow{font-size:28px;letter-spacing:2px;overflow-wrap:anywhere}
@@ -160,7 +161,7 @@ button,input{touch-action:manipulation}
   <main class="card">
     <!-- start -->
     <div class="intro" id="startBox">
-      <div class="scene"><div class="dino" aria-hidden="true">🦕</div>
+      <div class="scene"><div class="dino"><img src="dino.png" alt="Dino the dinosaur" draggable="false"></div>
         <div class="bubble"><strong>Hello, space explorer!</strong><span>I’m Dino. Let’s fly to five planets and talk in Chinese!</span></div></div>
       <ul class="howto">
         <li>🎧 <b>Listen</b> to Dino’s question. Tap <b>Replay</b> to hear it again.</li>
@@ -175,7 +176,7 @@ button,input{touch-action:manipulation}
     <div id="talk" hidden style="display:flex;flex-direction:column;gap:14px">
       <div class="qnum" id="qnum"></div>
       <div class="scene">
-        <div class="dino" id="dino" aria-hidden="true">🦕</div>
+        <div class="dino" id="dino"><img src="dino.png" alt="Dino the dinosaur" draggable="false"></div>
         <div class="bubble">
           <div class="row1">
             <button class="play" id="playBtn" type="button" aria-label="Hear Dino"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M4 2.5v11l9-5.5z" fill="currentColor"/></svg></button>
@@ -215,7 +216,7 @@ button,input{touch-action:manipulation}
 
     <!-- end -->
     <div class="end" id="endBox" hidden style="display:flex;flex-direction:column;gap:10px">
-      <div class="dino" aria-hidden="true">🦕</div>
+      <div class="dino"><img src="dino.png" alt="Dino the dinosaur" draggable="false"></div>
       <h2>Mission complete!</h2>
       <div class="starrow" id="starRow"></div>
       <p id="endText"></p>
@@ -228,7 +229,7 @@ button,input{touch-action:manipulation}
     <p>“Every little sentence is a big step forward.”</p>
     <cite>— Ms Fong</cite>
   </blockquote>
-  <div class="ver">Version 5 · 31 Oct 2026</div>
+  <div class="ver">Version 7 · 31 Oct 2026</div>
 </div>
 
 <script>
