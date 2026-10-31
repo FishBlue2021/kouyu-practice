@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Dino Space Mission Year 9 CMFL2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;900&display=swap">
+<style>
+/* Layout: a grade's mission list — night sky, Dino, one card per lesson mission. */
+:root{--space:#0E1433;--card:#FFFDF8;--ink:#253250;--muted:#5F6B82;--jade:#267365;--jade-dark:#174D44;--gold:#F2C14E;--star:#FFE3A2;--sky-text:#C9D5EA;
+  --f-ui:"Nunito","Segoe UI",system-ui,sans-serif;--f-zh:"KaiTi","STKaiti","Kaiti SC","Noto Serif SC",serif;color-scheme:light}
+*{box-sizing:border-box} html,body{margin:0}
+body{min-height:100vh;color:var(--ink);font-family:var(--f-ui);line-height:1.5;
+  background:radial-gradient(ellipse at 12% 12%,#334A7980,transparent 45%),radial-gradient(ellipse at 92% 70%,#65457A70,transparent 50%),var(--space);background-attachment:fixed}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background-image:radial-gradient(circle,#ffffff80 1px,transparent 1.6px),radial-gradient(circle,#FFE3A290 1.4px,transparent 2.1px);
+  background-size:73px 91px,173px 157px;background-position:0 0,30px 60px}
+.wrap{max-width:640px;margin:0 auto;padding-block:24px 40px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));display:flex;flex-direction:column;gap:16px}
+header{display:flex;align-items:center;gap:12px;color:#fff}
+header img{width:clamp(110px,28vw,150px);flex:none;filter:drop-shadow(0 6px 10px #0000004d)}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;color:#A9DFCB}
+h1{font-size:clamp(26px,6vw,36px);font-weight:900;margin:0;line-height:1.1}
+.zh{font-family:var(--f-zh);font-size:22px;color:var(--star)}
+.list{display:flex;flex-direction:column;gap:12px}
+a.mission{display:flex;align-items:center;gap:14px;background:var(--card);border-radius:20px;padding:16px 18px;text-decoration:none;color:var(--ink);box-shadow:0 10px 30px #03092355}
+a.mission:hover{transform:translateY(-2px)}
+a.mission:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.num{flex:none;width:56px;height:56px;border-radius:16px;background:var(--gold);color:#443217;display:grid;place-items:center;font-weight:900;font-size:15px;text-align:center;line-height:1.1}
+.txt{min-width:0;flex:1}
+.txt b{display:block;font-size:19px}
+.txt span{color:var(--muted);font-size:14px}
+.go{flex:none;font-weight:900;color:var(--jade);font-size:22px}
+.quote{text-align:center;color:var(--star);font-weight:700;font-style:italic;margin:8px 0 0}
+.quote cite{display:block;font-style:normal;font-size:13px;color:var(--sky-text)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img src="/y9-cmfl2/mascot.png" onerror="this.onerror=null;this.src='/dino.png'" alt="Dino the dinosaur">
+    <div>
+      <div class="eyebrow">MS FONG’S MANDARIN</div>
+      <h1>Year 9 CMFL2 Missions</h1>
+      <div class="zh">恐龙太空探险 · 说中文</div>
+    </div>
+  </header>
+  <nav class="list" aria-label="Year 9 CMFL2 missions">
+    <a class="mission" href="u1/"><span class="num">U1</span><span class="txt"><b>Unit 1 · Work</b><span>Hello · family · jobs · every day · thank you</span></span><span class="go" aria-hidden="true">→</span></a>
+    <a class="mission" href="u2/"><span class="num">U2</span><span class="txt"><b>Unit 2 · Festivals &amp; Celebrations</b><span>Hello · festivals · Mid-Autumn &amp; Dragon Boat · birthdays · thank you</span></span><span class="go" aria-hidden="true">→</span></a>
+  </nav>
+  <p class="quote">“Every little sentence is a big step forward.”<cite>— Ms Fong</cite></p>
+</div>
+</body>
+</html>

@@ -230,7 +230,7 @@ button,input{touch-action:manipulation}
     <p>“Every little sentence is a big step forward.”</p>
     <cite>— Ms Fong</cite>
   </blockquote>
-  <div class="ver"><a href="../" style="color:#C9D5EA;font-weight:800">← All Year 5/6 missions</a><br>Year 5/6 · Lessons 2–3 · Version 6</div>
+  <div class="ver"><a href="../" style="color:#C9D5EA;font-weight:800">← All Year 5/6 missions</a><br>Year 5/6 · Lessons 2–3 · Version 8</div>
 </div>
 
 <script>
@@ -484,10 +484,10 @@ function finish(){
 /* ---------- checking answers ---------- */
 function localJudge(q,text){
   const last=S.i===S.qs.length-1, any=q.k==='*';
-  const zh=any ? /\S/.test(text) : /[\u4e00-\u9fff]/.test(text);
-  const bare=/^(你好|您好|再见|拜拜|谢谢|好的?)[！!。.？?]*$/.test(text.trim());   // a greeting alone doesn't answer a middle question
+  const zh=any ? /\S/.test(text) : /[\u4e00-\u9fff0-9]/.test(text);
+  const bare=/^(你好|您好|再见|拜拜|谢谢|hello|hi|hey|bye|thanks?|thank you)[！!。.？?]*$/i.test(text.trim());   // a greeting alone doesn't answer a middle question
   const midQ=q.stage>0&&q.stage<4;
-  const fits=any || (!(midQ&&bare) && (!q.k || new RegExp(q.k).test(text) || /不知道/.test(text)));
+  const fits=!(midQ&&bare) && (any || !q.k || new RegExp(q.k).test(text) || /不知道/.test(text));
   const ok=zh&&fits;
   return {ok, better:'', pron:'',
     feedback: ok ? '' : !zh ? 'Please answer in Chinese.' : 'That doesn’t answer Dino’s question.',
