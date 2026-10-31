@@ -420,6 +420,10 @@ async function judge(q,text){
   }catch(e){ throw 'net'; }
   if(res.status===401) throw 'code';
   if(res.status===404){ goLocal(); return localJudge(q,text); }
+  if(res.status===500){
+    const e=await res.json().catch(()=>({}));
+    if(/ANTHROPIC_API_KEY/.test(e.error||'')){ goLocal(); return localJudge(q,text); }
+  }
   if(!res.ok) throw 'net';
   const r=await res.json().catch(()=>null); if(!r||typeof r.ok!=='boolean') throw 'net';
   return {ok:r.ok, feedback:r.feedback, better:r.better,
