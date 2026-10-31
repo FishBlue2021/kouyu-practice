@@ -413,21 +413,32 @@ function localJudge(q,text){
 }
 async function judge(q,text){
   if(S.local) return localJudge(q,text);
-  let res;
+  let res, why='';
   try{
     res=await fetch('/api/turn',{method:'POST',headers:{'content-type':'application/json','x-class-code':classCode},
       body:JSON.stringify({question:q.q.zh,meaning:q.q.en,example:q.ex.zh,said:text.slice(0,200),last:S.i===S.qs.length-1})});
-  }catch(e){ throw 'net'; }
-  if(res.status===401) throw 'code';
-  if(res.status===404){ goLocal(); return localJudge(q,text); }
-  if(res.status===500){
-    const e=await res.json().catch(()=>({}));
-    if(/ANTHROPIC_API_KEY/.test(e.error||'')){ goLocal(); return localJudge(q,text); }
+  }catch(e){ why='no connection to the website'; }
+  if(res){
+    if(res.status===401) throw 'code';
+    if(res.ok){
+      const r=await res.json().catch(()=>null);
+      if(r&&typeof r.ok==='boolean') return {ok:r.ok, feedback:r.feedback, better:r.better,
+        reply: r.ok&&r.reply ? W(r.reply,r.reply_py||'',r.reply_en||'') : null};
+      why='the AI sent back an answer Dino could not read';
+    } else {
+      const e=await res.json().catch(()=>({}));
+      const err=String(e.error||'');
+      why = res.status===404 ? 'the AI function is not deployed (404)'
+          : /ANTHROPIC_API_KEY/.test(err) ? 'no API key yet (ANTHROPIC_API_KEY is empty)'
+          : res.status===429 ? 'too many requests, or the API account has no credit (429)'
+          : err==='upstream' ? 'the API key was refused, or the account has no credit (check Netlify function logs)'
+          : `server error ${res.status}${err?': '+err:''}`;
+    }
   }
-  if(!res.ok) throw 'net';
-  const r=await res.json().catch(()=>null); if(!r||typeof r.ok!=='boolean') throw 'net';
-  return {ok:r.ok, feedback:r.feedback, better:r.better,
-    reply: r.ok&&r.reply ? W(r.reply,r.reply_py||'',r.reply_en||'') : null};
+  /* Never block the student: fall back to a basic check and say why. */
+  if(res && (res.status===404 || /no API key/.test(why))) S.local=true;
+  note('Basic check mode: any answer in Chinese counts. Reason: '+why+'.');
+  return localJudge(q,text);
 }
 function goLocal(){
   S.local=true;
