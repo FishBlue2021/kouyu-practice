@@ -229,7 +229,7 @@ button,input{touch-action:manipulation}
     <p>“Every little sentence is a big step forward.”</p>
     <cite>— Ms Fong</cite>
   </blockquote>
-  <div class="ver"><a href="../" style="color:#C9D5EA;font-weight:800">← All Year 5/6 missions</a><br>Year 5/6 · Lessons 2–3 · Version 3</div>
+  <div class="ver"><a href="../" style="color:#C9D5EA;font-weight:800">← All Year 5/6 missions</a><br>Year 5/6 · Lessons 2–3 · Version 5</div>
 </div>
 
 <script>
@@ -239,23 +239,23 @@ const Q=(q,ex,k)=>({q,ex,k});
    k = keywords used ONLY in basic-check mode (when the AI isn't connected). The AI accepts any sensible answer. */
 const NUM='[0-9一二三四五六七八九十百千万零两几]|多';
 const LOOK='高|矮|胖|瘦|长|短|卷|直|大|小|圆|尖|帅|丑|好看|漂亮|可爱|眼镜|头发|眼睛|个子|鼻子|嘴巴|耳朵|脸|腿|手|黑|白|黄|红|像|一样|不|普通|一般';
-const ANIMAL='猫|狗|鸟|鱼|兔|马|牛|蛇|熊|象|猴|虎|狮|龟|鹿|河马|猩猩|熊猫|仓鼠|动物|恐龙|鸡|鸭|羊|猪|老鼠';
+const ANIMAL='猫|狗|鸟|鱼|兔|马|牛|蛇|熊|象|猴|虎|狮|龟|鹿|河马|猩猩|熊猫|仓鼠|动物|恐龙|鸡|鸭|羊|猪|鼠|企鹅|狐狸|海豚|鲸|鲨|斑马|袋鼠|骆驼|狼|蜂|蝴蝶|青蛙|蛙|考拉|鹰|孔雀|鹦鹉|蜥蜴|鹅|虫|豹|龙|狸';
 const POOLS = [
  {key:'hi', stage:0, n:1, items:[
   Q(W('你好！我是小恐龙。你今天好吗？','Nǐ hǎo! Wǒ shì xiǎo kǒnglóng. Nǐ jīntiān hǎo ma?','Hello! I’m Dino. How are you today?'), W('你好！我很好，谢谢。','Nǐ hǎo! Wǒ hěn hǎo, xièxie.','Hi! I’m very well, thank you.'),'好|谢|不错|可以|累|开心|高兴|还行|忙'),
   Q(W('太空探险家，你好！你好吗？','Tàikōng tànxiǎnjiā, nǐ hǎo! Nǐ hǎo ma?','Hello, space explorer! How are you?'), W('你好！我很好，你呢？','Nǐ hǎo! Wǒ hěn hǎo, nǐ ne?','Hi! I’m fine, and you?'),'好|谢|不错|可以|累|开心|高兴|还行|忙'),
-  Q(W('同学们好！你今天开心吗？','Tóngxuémen hǎo! Nǐ jīntiān kāixīn ma?','Hello everyone! Are you happy today?'), W('我很开心！','Wǒ hěn kāixīn!','I’m very happy!'),'开心|高兴|好|不|很|还|累|可以')]},
+  Q(W('同学们好！你今天开心吗？','Tóngxuémen hǎo! Nǐ jīntiān kāixīn ma?','Hello everyone! Are you happy today?'), W('我很开心！','Wǒ hěn kāixīn!','I’m very happy!'),'开心|高兴|好|不|很|还|累|可以|一点|有点|对|是|嗯')]},
  {key:'me', stage:0, n:1, items:[
-  Q(W('你叫什么名字？','Nǐ jiào shénme míngzi?','What’s your name?'), W('我叫王天一。','Wǒ jiào Wáng Tiānyī.','My name is Wang Tianyi.'),'叫|是|名'),
+  Q(W('你叫什么名字？','Nǐ jiào shénme míngzi?','What’s your name?'), W('我叫王天一。','Wǒ jiào Wáng Tiānyī.','My name is Wang Tianyi.'),'*'),
   Q(W('你今年几岁？','Nǐ jīnnián jǐ suì?','How old are you this year?'), W('我今年十岁。','Wǒ jīnnián shí suì.','I’m ten this year.'),NUM+'|岁'),
-  Q(W('你现在住在哪里？','Nǐ xiànzài zhù zài nǎlǐ?','Where do you live now?'), W('我现在住在吉隆坡。','Wǒ xiànzài zhù zài Jílóngpō.','I live in Kuala Lumpur now.'),'住|在|坡|国|京|海|市|州|家|里|这|那|马来西亚|山|城')]},
+  Q(W('你现在住在哪里？','Nǐ xiànzài zhù zài nǎlǐ?','Where do you live now?'), W('我现在住在吉隆坡。','Wǒ xiànzài zhù zài Jílóngpō.','I live in Kuala Lumpur now.'),'')]},
  {key:'family', stage:1, n:2, items:[
   Q(W('你家有几口人？','Nǐ jiā yǒu jǐ kǒu rén?','How many people are in your family?'), W('我家有五口人。','Wǒ jiā yǒu wǔ kǒu rén.','There are five people in my family.'),NUM+'|人|口|个'),
   Q(W('你有外公、外婆吗？','Nǐ yǒu wàigōng, wàipó ma?','Do you have a grandpa and grandma on your mum’s side?'), W('有，我有外公、外婆。','Yǒu, wǒ yǒu wàigōng, wàipó.','Yes, I have a maternal grandpa and grandma.'),'有|没|外公|外婆|都|不'),
-  Q(W('你爸爸妈妈工作吗？','Nǐ bàba māma gōngzuò ma?','Do your dad and mum work?'), W('他们都工作。','Tāmen dōu gōngzuò.','They both work.'),'工作|不|都|在|是|没|上班'),
+  Q(W('你爸爸妈妈工作吗？','Nǐ bàba māma gōngzuò ma?','Do your dad and mum work?'), W('他们都工作。','Tāmen dōu gōngzuò.','They both work.'),'工作|不|都|在|是|没|上班|对|嗯'),
   Q(W('你有几个阿姨？','Nǐ yǒu jǐ ge āyí?','How many aunts (mum’s sisters) do you have?'), W('我有两个阿姨。','Wǒ yǒu liǎng ge āyí.','I have two aunts.'),NUM+'|没|阿姨|有'),
   Q(W('你有舅舅吗？他工作吗？','Nǐ yǒu jiùjiu ma? Tā gōngzuò ma?','Do you have an uncle (mum’s brother)? Does he work?'), W('我有一个舅舅，他工作。','Wǒ yǒu yí ge jiùjiu, tā gōngzuò.','I have one uncle, and he works.'),'有|没|舅舅|工作|不'),
-  Q(W('你有哥哥、姐姐吗？','Nǐ yǒu gēge, jiějie ma?','Do you have older brothers or sisters?'), W('我有一个姐姐，没有哥哥。','Wǒ yǒu yí ge jiějie, méiyǒu gēge.','I have an older sister but no older brother.'),'有|没|哥|姐|弟|妹|个|不'),
+  Q(W('你有哥哥、姐姐吗？','Nǐ yǒu gēge, jiějie ma?','Do you have older brothers or sisters?'), W('我有一个姐姐，没有哥哥。','Wǒ yǒu yí ge jiějie, méiyǒu gēge.','I have an older sister but no older brother.'),'有|没|哥|姐|弟|妹|个|不|老大|独生|只有我'),
   Q(W('你爷爷、奶奶工作吗？','Nǐ yéye, nǎinai gōngzuò ma?','Do your grandpa and grandma (dad’s side) work?'), W('他们不工作。','Tāmen bù gōngzuò.','They don’t work.'),'工作|不|都|没|上班|在|家')]},
  {key:'looks', stage:2, n:3, items:[
   Q(W('你长什么样？','Nǐ zhǎng shénme yàng?','What do you look like?'), W('我个子不高，头发很短，眼睛很大。','Wǒ gèzi bù gāo, tóufa hěn duǎn, yǎnjing hěn dà.','I’m not tall, my hair is short and my eyes are big.'),LOOK),
@@ -264,24 +264,24 @@ const POOLS = [
   Q(W('你爸爸长什么样？','Nǐ bàba zhǎng shénme yàng?','What does your dad look like?'), W('我爸爸个子很高，很帅。','Wǒ bàba gèzi hěn gāo, hěn shuài.','My dad is tall and handsome.'),LOOK),
   Q(W('你的头发长不长？','Nǐ de tóufa cháng bu cháng?','Is your hair long?'), W('我的头发不长，很短。','Wǒ de tóufa bù cháng, hěn duǎn.','My hair isn’t long; it’s short.'),'长|短|不|头发|卷|直|还|一般'),
   Q(W('你的头发是卷的还是直的？','Nǐ de tóufa shì juǎn de háishi zhí de?','Is your hair curly or straight?'), W('我的头发是直的。','Wǒ de tóufa shì zhí de.','My hair is straight.'),'卷|直|头发|都|有点|不'),
-  Q(W('你的个子高吗？','Nǐ de gèzi gāo ma?','Are you tall?'), W('我的个子不太高。','Wǒ de gèzi bú tài gāo.','I’m not very tall.'),'高|矮|不|个子|还|一般|很'),
+  Q(W('你的个子高吗？','Nǐ de gèzi gāo ma?','Are you tall?'), W('我的个子不太高。','Wǒ de gèzi bú tài gāo.','I’m not very tall.'),'高|矮|不|个子|还|一般|很|米|[0-9一二三四五六七八九十]|对|是'),
   Q(W('你的好朋友戴眼镜吗？','Nǐ de hǎo péngyou dài yǎnjìng ma?','Does your good friend wear glasses?'), W('他不戴眼镜。','Tā bú dài yǎnjìng.','He doesn’t wear glasses.'),'戴|不|没|眼镜'),
   Q(W('你的眼睛大不大？','Nǐ de yǎnjing dà bu dà?','Are your eyes big?'), W('我的眼睛很大。','Wǒ de yǎnjing hěn dà.','My eyes are big.'),'大|小|不|眼睛|还|一般|很'),
   Q(W('你觉得小恐龙可爱吗？','Nǐ juéde xiǎo kǒnglóng kě’ài ma?','Do you think Dino is cute?'), W('很可爱！','Hěn kě’ài!','Very cute!'),'可爱|不|很|是|好看|帅|丑|漂亮|觉得|对|酷')]},
  {key:'animals', stage:3, n:2, items:[
   Q(W('你常去动物园吗？','Nǐ cháng qù dòngwùyuán ma?','Do you often go to the zoo?'), W('我不常去动物园。','Wǒ bù cháng qù dòngwùyuán.','I don’t often go to the zoo.'),'常|去|不|没|动物园|有时|很少|会'),
-  Q(W('你喜欢什么动物？','Nǐ xǐhuan shénme dòngwù?','What animals do you like?'), W('我喜欢熊猫。','Wǒ xǐhuan xióngmāo.','I like pandas.'),ANIMAL+'|喜欢|都'),
+  Q(W('你喜欢什么动物？','Nǐ xǐhuan shénme dòngwù?','What animals do you like?'), W('我喜欢熊猫。','Wǒ xǐhuan xióngmāo.','I like pandas.'),''),
   Q(W('你们家养宠物吗？','Nǐmen jiā yǎng chǒngwù ma?','Does your family keep a pet?'), W('我们家养了一只猫。','Wǒmen jiā yǎng le yì zhī māo.','We have a cat.'),'养|没|不|有|宠物|'+ANIMAL),
-  Q(W('你喜欢画什么动物？','Nǐ xǐhuan huà shénme dòngwù?','What animals do you like to draw?'), W('我喜欢画长颈鹿。','Wǒ xǐhuan huà chángjǐnglù.','I like drawing giraffes.'),ANIMAL+'|画|不'),
+  Q(W('你喜欢画什么动物？','Nǐ xǐhuan huà shénme dòngwù?','What animals do you like to draw?'), W('我喜欢画长颈鹿。','Wǒ xǐhuan huà chángjǐnglù.','I like drawing giraffes.'),''),
   Q(W('长颈鹿的脖子什么样？','Chángjǐnglù de bózi shénme yàng?','What is a giraffe’s neck like?'), W('长颈鹿的脖子很长。','Chángjǐnglù de bózi hěn cháng.','A giraffe’s neck is very long.'),'长|短|很|脖子|高|大'),
   Q(W('乌龟的腿长不长？','Wūguī de tuǐ cháng bu cháng?','Are a tortoise’s legs long?'), W('乌龟的腿很短。','Wūguī de tuǐ hěn duǎn.','A tortoise’s legs are very short.'),'短|长|不|腿|很'),
   Q(W('熊猫长什么样？','Xióngmāo zhǎng shénme yàng?','What does a panda look like?'), W('熊猫很胖，很可爱。','Xióngmāo hěn pàng, hěn kě’ài.','Pandas are chubby and very cute.'),LOOK+'|毛|耳朵|尾巴|爪子'),
   Q(W('大猩猩有尾巴吗？','Dàxīngxing yǒu wěiba ma?','Do gorillas have a tail?'), W('大猩猩没有尾巴。','Dàxīngxing méiyǒu wěiba.','Gorillas don’t have a tail.'),'有|没|尾巴|不'),
-  Q(W('你觉得小头的河马会好看吗？','Nǐ juéde xiǎo tóu de hémǎ huì hǎokàn ma?','Do you think a hippo with a small head would look good?'), W('不会好看。','Bú huì hǎokàn.','It wouldn’t look good.'),'会|不|好看|可爱|丑|觉得|好|奇怪|很')]},
+  Q(W('你觉得小头的河马会好看吗？','Nǐ juéde xiǎo tóu de hémǎ huì hǎokàn ma?','Do you think a hippo with a small head would look good?'), W('不会好看。','Bú huì hǎokàn.','It wouldn’t look good.'),'会|不|好看|可爱|丑|觉得|奇怪|很|漂亮|帅')]},
  {key:'bye', stage:4, n:1, items:[
-  Q(W('今天你说得很好！再见！','Jīntiān nǐ shuō de hěn hǎo! Zàijiàn!','You spoke very well today! Goodbye!'), W('谢谢，再见！','Xièxie, zàijiàn!','Thank you. Goodbye!'),'再见|拜|见|谢|明天|好'),
-  Q(W('好了，我们下次见！','Hǎo le, wǒmen xià cì jiàn!','OK, see you next time!'), W('下次见！再见！','Xià cì jiàn! Zàijiàn!','See you next time! Bye!'),'再见|拜|见|谢|明天|下次|好'),
-  Q(W('小恐龙要回太空了。再见！','Xiǎo kǒnglóng yào huí tàikōng le. Zàijiàn!','Dino is flying back to space. Goodbye!'), W('小恐龙，再见！','Xiǎo kǒnglóng, zàijiàn!','Goodbye, Dino!'),'再见|拜|见|谢|明天|好')]}
+  Q(W('今天你说得很好！再见！','Jīntiān nǐ shuō de hěn hǎo! Zàijiàn!','You spoke very well today! Goodbye!'), W('谢谢，再见！','Xièxie, zàijiàn!','Thank you. Goodbye!'),'再见|拜|见|谢|明天|下次'),
+  Q(W('好了，我们下次见！','Hǎo le, wǒmen xià cì jiàn!','OK, see you next time!'), W('下次见！再见！','Xià cì jiàn! Zàijiàn!','See you next time! Bye!'),'再见|拜|见|谢|明天|下次'),
+  Q(W('小恐龙要回太空了。再见！','Xiǎo kǒnglóng yào huí tàikōng le. Zàijiàn!','Dino is flying back to space. Goodbye!'), W('小恐龙，再见！','Xiǎo kǒnglóng, zàijiàn!','Goodbye, Dino!'),'再见|拜|见|谢|明天|下次')]}
 ];
 const LEVEL='Year 5/6';
 const VOCAB=`Lesson 2a Family: 外公 外婆 舅舅 阿姨 叔叔 姑姑 爷爷 奶奶 爸爸 妈妈 哥哥 姐姐 弟弟 妹妹 工作 都 家 有 几个/几口人 它 只 吃吃喝喝.
@@ -477,8 +477,11 @@ function finish(){
 
 /* ---------- checking answers ---------- */
 function localJudge(q,text){
-  const zh=/[一-鿿]/.test(text), last=S.i===S.qs.length-1;
-  const fits=!q.k || new RegExp(q.k).test(text) || /不知道/.test(text);
+  const last=S.i===S.qs.length-1, any=q.k==='*';
+  const zh=any ? /\S/.test(text) : /[\u4e00-\u9fff]/.test(text);
+  const bare=/^(你好|您好|再见|拜拜|谢谢|好的?)[！!。.？?]*$/.test(text.trim());   // a greeting alone doesn't answer a middle question
+  const midQ=q.stage>0&&q.stage<4;
+  const fits=any || (!(midQ&&bare) && (!q.k || new RegExp(q.k).test(text) || /不知道/.test(text)));
   const ok=zh&&fits;
   return {ok, better:'', pron:'',
     feedback: ok ? '' : !zh ? 'Please answer in Chinese.' : 'That doesn’t answer Dino’s question.',
